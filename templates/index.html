@@ -1,0 +1,166 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Detection</title>
+   
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+        }
+
+        nav h1 {
+            margin: 0; /* Remove default margin for the h1 element */
+        }
+
+        nav a {
+            color: #f2f2f2;
+            text-decoration: none;
+            padding: 10px 8px; /* Adjust padding values */
+            margin-right: 10px; /* Adjust margin-right for spacing */
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dropdown {
+            display: inline-block;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: #f2f2f2;
+            padding: 10px 8px; /* Adjust padding values */
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            cursor: pointer; /* Add cursor pointer for better usability */
+            margin-right: 10px; /* Adjust margin-right for spacing */
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #555;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            display: block;
+            color: black;
+            padding: 10px 8px; /* Adjust padding values */
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #webcam-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 50px);
+        }
+
+        #webcam {
+            max-width: 100%;
+            height: auto;
+            transform: scaleX(-1);
+        }
+
+        /* Add styles for the predicted label box */
+        #predicted-label-box {
+            text-align: center;
+            padding: 1em;
+            border: 2px solid #333;
+            margin-top: 20px; /* Adjust margin as needed */
+        }
+
+        #predicted-label {
+            font-size: 1.2em;
+        }
+
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            width: 100%;
+        }
+
+        #hand-landmarks-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+    </style>
+    
+</head>
+<body>
+
+    <nav>
+        <h1>Sign Language Detection</h1>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <div class="dropdown">
+            <button class="dropbtn">More 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="webcam-container">
+        <video id="webcam" autoplay playsinline></video>
+        <canvas id="hand-landmarks-canvas"></canvas>
+    </div>
+    
+    <div id="predicted-label-box">
+        <p id="predicted-label"></p>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+
+    <footer>
+        <p>&copy; 2023 Sign Language Detection</p>
+    </footer>
+
+</body>
+</html>
